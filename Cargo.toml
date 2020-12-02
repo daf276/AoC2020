@@ -1,7 +1,7 @@
 [package]
-name = "AoC2020"
+name = "aoc_2020"
 version = "0.1.0"
-authors = ["Attila <daf276@gmx.de>"]
+authors = ["Attila <attila@kageru.moe>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

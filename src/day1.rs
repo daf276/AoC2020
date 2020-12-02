@@ -1,4 +1,3 @@
-use itertools::iproduct;
 use itertools::Itertools;
 
 pub fn read_input() -> Vec<u32> {
