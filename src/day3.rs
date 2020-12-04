@@ -15,11 +15,7 @@ pub fn count_trees(map: &Vec<Vec<bool>>, dx: usize, dy: usize) -> usize {
     let mut trees_visited = 0;
 
     for line in map.iter().skip(dy).step_by(dy) {
-        x_pos += dx;
-        while x_pos >= line_len {
-            x_pos -= line_len;
-        }
-
+        x_pos = (x_pos + dx) % line_len;
         trees_visited += line[x_pos] as usize;
     }
 
