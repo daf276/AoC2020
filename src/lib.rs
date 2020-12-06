@@ -11,6 +11,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 
 #[bench]
 fn day1_input(b: &mut test::Bencher) {
@@ -95,4 +96,21 @@ fn day5_part1(b: &mut test::Bencher) {
 fn day5_part2(b: &mut test::Bencher) {
     let input = day5::read_input();
     b.iter(|| test::black_box(day5::part2(&input)))
+}
+
+#[bench]
+fn day6_input(b: &mut test::Bencher) {
+    b.iter(|| test::black_box(day6::read_input()))
+}
+
+#[bench]
+fn day6_part1(b: &mut test::Bencher) {
+    let input = day6::read_input();
+    b.iter(|| test::black_box(day6::part1(&input)))
+}
+
+#[bench]
+fn day6_part2(b: &mut test::Bencher) {
+    let input = day6::read_input();
+    b.iter(|| test::black_box(day6::part2(&input)))
 }

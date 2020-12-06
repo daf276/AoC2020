@@ -7,6 +7,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 
 fn main() {
     let day1_input = day1::read_input();
@@ -28,4 +29,8 @@ fn main() {
     let day5_input = day5::read_input();
     println!("Day5 Part1: {}", day5::part1(&day5_input));
     println!("Day5 Part2: {}", day5::part2(&day5_input));
+
+    let day6_input = day6::read_input();
+    println!("Day6 Part1: {}", day6::part1(&day6_input));
+    println!("Day6 Part2: {}", day6::part2(&day6_input));
 }
