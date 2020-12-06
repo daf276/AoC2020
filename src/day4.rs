@@ -9,25 +9,11 @@ lazy_static! {
 }
 
 pub fn read_input() -> Vec<String> {
-    let input = include_str!("../input/day4").lines().collect_vec();
-
-    let mut vec: Vec<String> = Vec::new();
-
-    let mut string = String::from("");
-
-    for i in 0..input.len() - 1 {
-        if input[i] != "" {
-            string += input[i];
-            if input[i + 1] != "" {
-                string += " ";
-            }
-        } else {
-            vec.push(string.clone());
-            string = String::from("");
-        }
-    }
-
-    return vec;
+    return include_str!("../input/day4")
+        .replace("\r", "")
+        .split("\n\n")
+        .map(|passport| passport.replace("\n", " ").trim().to_string())
+        .collect();
 }
 
 pub fn part1(input: &Vec<String>) -> usize {
