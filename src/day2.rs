@@ -1,4 +1,5 @@
 use itertools::Itertools;
+use rayon::prelude::*;
 use text_io::scan;
 
 pub struct PasswordPolicy {
@@ -25,7 +26,10 @@ impl From<&'_ str> for PasswordPolicy {
 }
 
 pub fn read_input() -> Vec<PasswordPolicy> {
-    include_str!("../input/day2").lines().map_into().collect()
+    include_str!("../input/day2")
+        .par_lines()
+        .map(|line| PasswordPolicy::from(line))
+        .collect()
 }
 
 pub fn part1(input: &Vec<PasswordPolicy>) -> usize {
