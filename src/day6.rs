@@ -1,37 +1,25 @@
-use itertools::Itertools;
-use rayon::prelude::*;
-use std::collections::HashSet;
-
-pub fn read_input() -> Vec<Vec<HashSet<char>>> {
+pub fn read_input() -> Vec<Vec<u128>> {
     include_str!("../input/day6")
         .replace("\r", "")
         .split("\n\n")
-        .collect_vec()
-        .par_iter()
-        .map(|grp| grp.lines().map(|person| person.chars().collect()).collect())
+        .map(|grp| {
+            grp.lines()
+                .map(|person| person.bytes().fold(0, |acc, bit| acc ^ 1 << bit))
+                .collect()
+        })
         .collect()
 }
 
-pub fn part1(answers: &Vec<Vec<HashSet<char>>>) -> usize {
-    return answers.par_iter().map(|grp| union(grp).len()).sum();
+pub fn part1(answers: &Vec<Vec<u128>>) -> u32 {
+    return answers
+        .iter()
+        .map(|group| group.iter().fold(0, |acc, n| acc | n).count_ones())
+        .sum();
 }
 
-pub fn part2(answers: &[Vec<HashSet<char>>]) -> usize {
-    return answers.par_iter().map(|grp| intersection(grp).len()).sum();
-}
-
-fn union(sets: &Vec<HashSet<char>>) -> HashSet<char> {
-    let mut result = HashSet::new();
-    for set in sets.iter() {
-        result = result.union(&set).map(|&c| c).collect();
-    }
-    return result;
-}
-
-fn intersection(sets: &Vec<HashSet<char>>) -> HashSet<char> {
-    let mut result = sets[0].clone();
-    for set in sets.iter() {
-        result = result.intersection(&set).map(|&c| c).collect();
-    }
-    return result;
+pub fn part2(answers: &Vec<Vec<u128>>) -> u32 {
+    return answers
+        .iter()
+        .map(|group| group.iter().fold(u128::MAX, |acc, n| acc & n).count_ones())
+        .sum();
 }
