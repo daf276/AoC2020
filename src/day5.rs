@@ -1,7 +1,7 @@
 use itertools::Itertools;
 
 pub fn read_input() -> Vec<u16> {
-    return include_str!("../day5")
+    return include_str!("../input/day5")
         .lines()
         .map(|line| parse_line(line))
         .collect();

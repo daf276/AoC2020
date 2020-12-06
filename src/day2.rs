@@ -25,7 +25,7 @@ impl From<&'_ str> for PasswordPolicy {
 }
 
 pub fn read_input() -> Vec<PasswordPolicy> {
-    include_str!("../day2").lines().map_into().collect()
+    include_str!("../input/day2").lines().map_into().collect()
 }
 
 pub fn part1(input: &Vec<PasswordPolicy>) -> usize {

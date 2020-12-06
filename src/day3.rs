@@ -1,5 +1,5 @@
 pub fn read_input() -> Vec<Vec<bool>> {
-    return include_str!("../day3")
+    return include_str!("../input/day3")
         .lines()
         .map(|line| parse_line(line))
         .collect();

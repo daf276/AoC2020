@@ -9,7 +9,7 @@ lazy_static! {
 }
 
 pub fn read_input() -> Vec<String> {
-    let input = include_str!("../day4").lines().collect_vec();
+    let input = include_str!("../input/day4").lines().collect_vec();
 
     let mut vec: Vec<String> = Vec::new();
 
