@@ -1,3 +1,4 @@
+#![feature(bool_to_option)]
 #[macro_use]
 extern crate lazy_static;
 
@@ -5,6 +6,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 fn main() {
     let day1_input = day1::read_input();
@@ -22,4 +24,8 @@ fn main() {
     let day4_input = day4::read_input();
     println!("Day4 Part1: {}", day4::part1(&day4_input));
     println!("Day4 Part2: {}", day4::part2(&day4_input));
+
+    let day5_input = day5::read_input();
+    println!("Day5 Part1: {}", day5::part1(&day5_input));
+    println!("Day5 Part2: {}", day5::part2(&day5_input));
 }

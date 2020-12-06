@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 #![feature(test)]
+#![feature(bool_to_option)]
 extern crate test;
 
 #[macro_use]
@@ -9,6 +10,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 #[bench]
 fn day1_input(b: &mut test::Bencher) {
@@ -76,4 +78,21 @@ fn day4_part1(b: &mut test::Bencher) {
 fn day4_part2(b: &mut test::Bencher) {
     let input = day4::read_input();
     b.iter(|| test::black_box(day4::part2(&input)))
+}
+
+#[bench]
+fn day5_input(b: &mut test::Bencher) {
+    b.iter(|| test::black_box(day5::read_input()))
+}
+
+#[bench]
+fn day5_part1(b: &mut test::Bencher) {
+    let input = day5::read_input();
+    b.iter(|| test::black_box(day5::part1(&input)))
+}
+
+#[bench]
+fn day5_part2(b: &mut test::Bencher) {
+    let input = day5::read_input();
+    b.iter(|| test::black_box(day5::part2(&input)))
 }
