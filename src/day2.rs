@@ -14,7 +14,7 @@ impl From<&'_ str> for PasswordPolicy {
         let min: usize;
         let max: usize;
         let pw: String;
-        scan!(s.bytes() => "{}-{} {}: {}\n", min, max, c, pw);
+        scan!(s.bytes() => "{}-{} {}: {}", min, max, c, pw);
         let character = c as u8;
         PasswordPolicy {
             character,
