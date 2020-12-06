@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use rayon::prelude::*;
 use std::collections::HashSet;
 
@@ -5,6 +6,8 @@ pub fn read_input() -> Vec<Vec<HashSet<char>>> {
     include_str!("../input/day6")
         .replace("\r", "")
         .split("\n\n")
+        .collect_vec()
+        .par_iter()
         .map(|grp| grp.lines().map(|person| person.chars().collect()).collect())
         .collect()
 }
