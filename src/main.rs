@@ -35,7 +35,7 @@ fn main() {
     println!("Day6 Part1: {}", day6::part1(&day6_input));
     println!("Day6 Part2: {}", day6::part2(&day6_input));
 
-    let (a, b) = day7::read_input();
-    println!("Day7 Part1: {}", day7::part1(&a));
-    println!("Day7 Part2: {}", day7::part2(&a));
+    let day7_input = day7::read_input();
+    println!("Day7 Part1: {}", day7::part1(&day7_input));
+    println!("Day7 Part2: {}", day7::part2(&day7_input));
 }

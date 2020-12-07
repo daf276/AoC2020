@@ -123,12 +123,12 @@ fn day7_input(b: &mut test::Bencher) {
 
 #[bench]
 fn day7_part1(b: &mut test::Bencher) {
-    let (a, c) = day7::read_input();
-    b.iter(|| test::black_box(day7::part1(&a)))
+    let day7_input = day7::read_input();
+    b.iter(|| test::black_box(day7::part1(&day7_input)))
 }
 
 #[bench]
 fn day7_part2(b: &mut test::Bencher) {
-    let (a, c) = day7::read_input();
-    b.iter(|| test::black_box(day7::part2(&a)))
+    let day7_input = day7::read_input();
+    b.iter(|| test::black_box(day7::part2(&day7_input)))
 }
