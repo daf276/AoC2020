@@ -60,21 +60,19 @@ pub fn part2(input: &Vec<OP>) -> isize {
 fn emulate(ops: &Vec<OP>) -> (isize, bool) {
     let mut reached = vec![false; ops.len()];
     let mut acc = 0;
-    let mut i = 0;
+    let mut pc = 0;
 
-    while i < ops.len() as isize {
-        if reached[i as usize] {
+    while pc < ops.len() as isize {
+        if reached[pc as usize] {
             return (acc, false);
         } else {
-            reached[i as usize] = true;
-            match ops[i as usize].instruction {
-                Instruction::NOP => i += 1,
-                Instruction::JMP => i += ops[i as usize].value,
-                Instruction::ACC => {
-                    acc += ops[i as usize].value;
-                    i += 1
-                }
+            reached[pc as usize] = true;
+            match ops[pc as usize].instruction {
+                Instruction::NOP => (),
+                Instruction::JMP => pc += ops[pc as usize].value - 1,
+                Instruction::ACC => acc += ops[pc as usize].value,
             }
+            pc += 1;
         }
     }
 
