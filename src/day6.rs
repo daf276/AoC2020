@@ -1,3 +1,5 @@
+use std::ops::{BitAnd, BitOr};
+
 pub fn read_input() -> Vec<Vec<u128>> {
     return std::fs::read_to_string("input/day6")
         .unwrap()
@@ -14,13 +16,13 @@ pub fn read_input() -> Vec<Vec<u128>> {
 pub fn part1(answers: &Vec<Vec<u128>>) -> u32 {
     return answers
         .iter()
-        .map(|group| group.iter().fold(0, |acc, n| acc | n).count_ones())
+        .map(|group| group.iter().fold(0, u128::bitor).count_ones())
         .sum();
 }
 
 pub fn part2(answers: &Vec<Vec<u128>>) -> u32 {
     return answers
         .iter()
-        .map(|group| group.iter().fold(u128::MAX, |acc, n| acc & n).count_ones())
+        .map(|group| group.iter().fold(u128::MAX, u128::bitand).count_ones())
         .sum();
 }
