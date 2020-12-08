@@ -26,10 +26,11 @@ impl From<&'_ str> for PasswordPolicy {
 }
 
 pub fn read_input() -> Vec<PasswordPolicy> {
-    include_str!("../input/day2")
+    return std::fs::read_to_string("input/day2")
+        .unwrap()
         .par_lines()
         .map(|line| PasswordPolicy::from(line))
-        .collect()
+        .collect();
 }
 
 pub fn part1(input: &Vec<PasswordPolicy>) -> usize {

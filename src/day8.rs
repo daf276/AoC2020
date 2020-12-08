@@ -14,7 +14,8 @@ pub struct OP {
 }
 
 pub fn read_input() -> Vec<OP> {
-    return include_str!("../input/day8")
+    return std::fs::read_to_string("input/day8")
+        .unwrap()
         .lines()
         .map(|line| parse_line(line))
         .collect();

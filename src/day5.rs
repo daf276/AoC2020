@@ -1,7 +1,8 @@
 use itertools::Itertools;
 
 pub fn read_input() -> Vec<u16> {
-    return include_str!("../input/day5")
+    return std::fs::read_to_string("input/day5")
+        .unwrap()
         .lines()
         .map(|line| parse_line(line))
         .collect();

@@ -1,5 +1,6 @@
 pub fn read_input() -> Vec<Vec<bool>> {
-    return include_str!("../input/day3")
+    return std::fs::read_to_string("input/day3")
+        .unwrap()
         .lines()
         .map(|line| parse_line(line))
         .collect();

@@ -9,7 +9,8 @@ lazy_static! {
 }
 
 pub fn read_input() -> Vec<String> {
-    return include_str!("../input/day4")
+    return std::fs::read_to_string("input/day4")
+        .unwrap()
         .replace("\r", "")
         .split("\n\n")
         .map(|passport| passport.replace("\n", " ").trim().to_string())

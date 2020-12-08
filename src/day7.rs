@@ -13,7 +13,8 @@ pub fn read_input() -> Graph<String, u32> {
     let mut nodes: HashMap<String, NodeIndex> = HashMap::new();
     let mut graph = Graph::<String, u32>::new();
 
-    let lines = include_str!("../input/day7").lines();
+    let input = std::fs::read_to_string("input/day7").unwrap();
+    let lines = input.lines();
     for line in lines {
         let b1 = &BAG_RE.captures(line).unwrap()[1];
         if !nodes.contains_key(b1) {

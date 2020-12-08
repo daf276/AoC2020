@@ -1,5 +1,6 @@
 pub fn read_input() -> Vec<Vec<u128>> {
-    include_str!("../input/day6")
+    return std::fs::read_to_string("input/day6")
+        .unwrap()
         .replace("\r", "")
         .split("\n\n")
         .map(|grp| {
@@ -7,7 +8,7 @@ pub fn read_input() -> Vec<Vec<u128>> {
                 .map(|person| person.bytes().fold(0, |acc, bit| acc ^ 1 << bit))
                 .collect()
         })
-        .collect()
+        .collect();
 }
 
 pub fn part1(answers: &Vec<Vec<u128>>) -> u32 {
