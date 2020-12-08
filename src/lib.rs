@@ -1,10 +1,13 @@
 #![allow(dead_code)]
 #![feature(test)]
 #![feature(bool_to_option)]
+#![feature(map_first_last)]
 extern crate test;
 
 #[macro_use]
 extern crate lazy_static;
+
+use test::black_box;
 
 mod day1;
 mod day2;
@@ -17,19 +20,19 @@ mod day8;
 
 #[bench]
 fn day1_input(b: &mut test::Bencher) {
-    b.iter(|| test::black_box(day1::read_input()))
+    b.iter(|| black_box(day1::read_input()))
 }
 
 #[bench]
 fn day1_part1(b: &mut test::Bencher) {
     let input = day1::read_input();
-    b.iter(|| test::black_box(day1::part1(&input)))
+    b.iter(|| assert_eq!(day1::part1(black_box(&input)), 1018944));
 }
 
 #[bench]
 fn day1_part2(b: &mut test::Bencher) {
     let input = day1::read_input();
-    b.iter(|| test::black_box(day1::part2(&input)))
+    b.iter(|| assert_eq!(day1::part2(black_box(&input)), 8446464));
 }
 
 #[bench]
@@ -40,13 +43,13 @@ fn day2_input(b: &mut test::Bencher) {
 #[bench]
 fn day2_part1(b: &mut test::Bencher) {
     let input = day2::read_input();
-    b.iter(|| test::black_box(day2::part1(&input)))
+    b.iter(|| assert_eq!(day2::part1(black_box(&input)), 586));
 }
 
 #[bench]
 fn day2_part2(b: &mut test::Bencher) {
     let input = day2::read_input();
-    b.iter(|| test::black_box(day2::part2(&input)))
+    b.iter(|| assert_eq!(day2::part2(black_box(&input)), 352));
 }
 
 #[bench]
@@ -57,13 +60,13 @@ fn day3_input(b: &mut test::Bencher) {
 #[bench]
 fn day3_part1(b: &mut test::Bencher) {
     let input = day3::read_input();
-    b.iter(|| test::black_box(day3::part1(&input)))
+    b.iter(|| assert_eq!(day3::part1(black_box(&input)), 214));
 }
 
 #[bench]
 fn day3_part2(b: &mut test::Bencher) {
     let input = day3::read_input();
-    b.iter(|| test::black_box(day3::part2(&input)))
+    b.iter(|| assert_eq!(day3::part2(black_box(&input)), 8336352024));
 }
 
 #[bench]
@@ -74,13 +77,13 @@ fn day4_input(b: &mut test::Bencher) {
 #[bench]
 fn day4_part1(b: &mut test::Bencher) {
     let input = day4::read_input();
-    b.iter(|| test::black_box(day4::part1(&input)))
+    b.iter(|| assert_eq!(day4::part1(black_box(&input)), 200));
 }
 
 #[bench]
 fn day4_part2(b: &mut test::Bencher) {
     let input = day4::read_input();
-    b.iter(|| test::black_box(day4::part2(&input)))
+    b.iter(|| assert_eq!(day4::part2(black_box(&input)), 116));
 }
 
 #[bench]
@@ -91,13 +94,13 @@ fn day5_input(b: &mut test::Bencher) {
 #[bench]
 fn day5_part1(b: &mut test::Bencher) {
     let input = day5::read_input();
-    b.iter(|| test::black_box(day5::part1(&input)))
+    b.iter(|| assert_eq!(day5::part1(black_box(&input)), 989));
 }
 
 #[bench]
 fn day5_part2(b: &mut test::Bencher) {
     let input = day5::read_input();
-    b.iter(|| test::black_box(day5::part2(&input)))
+    b.iter(|| assert_eq!(day5::part2(black_box(&input)), 548));
 }
 
 #[bench]
@@ -108,13 +111,13 @@ fn day6_input(b: &mut test::Bencher) {
 #[bench]
 fn day6_part1(b: &mut test::Bencher) {
     let input = day6::read_input();
-    b.iter(|| test::black_box(day6::part1(&input)))
+    b.iter(|| assert_eq!(day6::part1(black_box(&input)), 6161));
 }
 
 #[bench]
 fn day6_part2(b: &mut test::Bencher) {
     let input = day6::read_input();
-    b.iter(|| test::black_box(day6::part2(&input)))
+    b.iter(|| assert_eq!(day6::part2(black_box(&input)), 2971));
 }
 
 #[bench]
@@ -124,14 +127,14 @@ fn day7_input(b: &mut test::Bencher) {
 
 #[bench]
 fn day7_part1(b: &mut test::Bencher) {
-    let day7_input = day7::read_input();
-    b.iter(|| test::black_box(day7::part1(&day7_input)))
+    let input = day7::read_input();
+    b.iter(|| assert_eq!(day7::part1(black_box(&input)), 197));
 }
 
 #[bench]
 fn day7_part2(b: &mut test::Bencher) {
-    let day7_input = day7::read_input();
-    b.iter(|| test::black_box(day7::part2(&day7_input)))
+    let input = day7::read_input();
+    b.iter(|| assert_eq!(day7::part2(black_box(&input)), 85324));
 }
 
 #[bench]
@@ -141,12 +144,17 @@ fn day8_input(b: &mut test::Bencher) {
 
 #[bench]
 fn day8_part1(b: &mut test::Bencher) {
-    let day8_input = day8::read_input();
-    b.iter(|| test::black_box(day8::part1(&day8_input)))
+    let input = day8::read_input();
+    b.iter(|| assert_eq!(day8::part1(black_box(&input)), 1451));
 }
 
 #[bench]
 fn day8_part2(b: &mut test::Bencher) {
-    let day8_input = day8::read_input();
-    b.iter(|| test::black_box(day8::part2(&day8_input)))
+    let input = day8::read_input();
+    b.iter(|| {
+        test::black_box(assert_eq!(
+            day8::part2(&input, &mut vec![false; input.len()], 0, 0, false).unwrap(),
+            1160
+        ))
+    })
 }
