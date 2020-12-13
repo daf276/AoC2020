@@ -16,7 +16,6 @@ macro_rules! bench_input {
     ($fn:ident()) => {
         #[bench]
         fn bench_input_parsing(b: &mut test::Bencher) {
-            let raw = read_input();
             b.iter(|| black_box(read_input()));
         }
     };
