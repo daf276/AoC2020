@@ -1,3 +1,6 @@
+#![feature(test)]
+extern crate test;
+
 use rayon::prelude::*;
 use text_io::scan;
 
@@ -58,4 +61,22 @@ fn characters_match(policy: &PasswordPolicy) -> bool {
     let first = pw[policy.min - 1] == policy.character;
     let second = pw[policy.max - 1] == policy.character;
     return first ^ second == true;
+}
+
+fn main() {
+    let input = read_input();
+    println!("Day2 Part1: {}", part1(&input));
+    println!("Day2 Part2: {}", part2(&input));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use aoc_2020::*;
+    use paste::paste;
+    use test::black_box;
+
+    //bench!(read_input());
+    bench!(part1() == 586);
+    bench!(part2() == 352);
 }

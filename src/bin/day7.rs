@@ -1,3 +1,8 @@
+#![feature(test)]
+#[macro_use]
+extern crate lazy_static;
+extern crate test;
+
 use petgraph::algo::has_path_connecting;
 use petgraph::prelude::*;
 use rayon::prelude::*;
@@ -65,4 +70,22 @@ fn count_bags(gr: &Graph<String, u32>, node: NodeIndex) -> u32 {
         }
         bag_count
     };
+}
+
+fn main() {
+    let input = read_input();
+    println!("Day7 Part1: {}", part1(&input));
+    println!("Day7 Part2: {}", part2(&input));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use aoc_2020::*;
+    use paste::paste;
+    use test::black_box;
+
+    //bench!(read_input());
+    bench!(part1() == 197);
+    bench!(part2() == 85324);
 }

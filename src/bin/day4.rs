@@ -1,3 +1,8 @@
+#![feature(test)]
+#[macro_use]
+extern crate lazy_static;
+extern crate test;
+
 use itertools::Itertools;
 use rayon::prelude::*;
 use regex::Regex;
@@ -96,4 +101,22 @@ fn is_valid_passport_id(input: &str) -> bool {
         Ok(_) => input.len() == 9,
         Err(_) => false,
     };
+}
+
+fn main() {
+    let input = read_input();
+    println!("Day4 Part1: {}", part1(&input));
+    println!("Day4 Part2: {}", part2(&input));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use aoc_2020::*;
+    use paste::paste;
+    use test::black_box;
+
+    //bench!(read_input());
+    bench!(part1() == 200);
+    bench!(part2() == 116);
 }

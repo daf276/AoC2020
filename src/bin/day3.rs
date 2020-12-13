@@ -1,3 +1,6 @@
+#![feature(test)]
+extern crate test;
+
 pub fn read_input() -> Vec<Vec<bool>> {
     return std::fs::read_to_string("input/day3")
         .unwrap()
@@ -33,4 +36,22 @@ pub fn part2(map: &Vec<Vec<bool>>) -> usize {
         .iter()
         .map(|(dx, dy)| count_trees(map, *dx, *dy))
         .fold(1, |result, val| result * val);
+}
+
+fn main() {
+    let input = read_input();
+    println!("Day3 Part1: {}", part1(&input));
+    println!("Day3 Part2: {}", part2(&input));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use aoc_2020::*;
+    use paste::paste;
+    use test::black_box;
+
+    //bench!(read_input());
+    bench!(part1() == 214);
+    bench!(part2() == 8336352024);
 }
