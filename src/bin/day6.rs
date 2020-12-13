@@ -43,7 +43,7 @@ mod tests {
     use paste::paste;
     use test::black_box;
 
-    //bench!(read_input());
+    bench_input!(read_input());
     bench!(part1() == 6161);
     bench!(part2() == 2971);
 }

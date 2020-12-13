@@ -44,8 +44,8 @@ pub fn part2(input: &Vec<usize>, part1_solution: usize) -> Option<usize> {
 fn main() {
     let input = read_input();
     let p1 = part1(&input, 25).unwrap();
-    println!("Day6 Part1: {}", p1);
-    println!("Day6 Part2: {}", part2(&input, p1).unwrap());
+    println!("Day9 Part1: {}", p1);
+    println!("Day9 Part2: {}", part2(&input, p1).unwrap());
 }
 
 #[cfg(test)]
@@ -55,7 +55,7 @@ mod tests {
     use paste::paste;
     use test::black_box;
 
-    //bench!(read_input());
-    //bench!(part1() == 197);
-    //bench!(part2() == 85324);
+    bench_input!(read_input());
+    bench!(part1(25) == Some(36845998));
+    bench!(part2(36845998) == Some(4830226));
 }
